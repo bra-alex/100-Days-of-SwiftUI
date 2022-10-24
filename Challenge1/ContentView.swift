@@ -146,155 +146,35 @@ struct ContentView: View {
     @State private var inintialSelectedTemp = TempConversions.celcius
     @State private var finalSelectedTemp = TempConversions.fahrenheit
     
-    var convertedTemp: String{
-        let initial = Measurement(value: temp, unit: inintialSelectedTemp.unit)
-        let final = initial.converted(to: finalSelectedTemp.unit)
-        
-        let formatter = MeasurementFormatter()
-        formatter.unitOptions = .providedUnit
-        formatter.numberFormatter.maximumFractionDigits = 2
-        
-        return formatter.string(from: final)
-    }
-    
     @State private var length = 0.0
     @State private var inintialSelectedLength = LengthConversions.meters
     @State private var finalSelectedLength = LengthConversions.kilometers
-    
-    var convertedLength: String{
-        let initial = Measurement(value: length, unit: inintialSelectedLength.unit)
-        let final = initial.converted(to: finalSelectedLength.unit)
-        
-        let formatter = MeasurementFormatter()
-        formatter.unitOptions = .providedUnit
-        formatter.numberFormatter.maximumFractionDigits = 2
-        
-        return formatter.string(from: final)
-    }
     
     @State private var time = 0.0
     @State private var inintialSelectedTime = TimeConversions.seconds
     @State private var finalSelectedTime = TimeConversions.minutes
     
-    var convertedTime: String{
-        let initial = Measurement(value: time, unit: inintialSelectedTime.unit)
-        let final = initial.converted(to: finalSelectedTime.unit)
-        
-        let formatter = MeasurementFormatter()
-        formatter.unitOptions = .providedUnit
-        formatter.numberFormatter.maximumFractionDigits = 2
-        
-        return formatter.string(from: final)
-    }
-    
     @State private var volume = 0.0
     @State private var inintialSelectedVolume = VolumeConversions.milliliters
     @State private var finalSelectedVolume = VolumeConversions.liters
-    
-    var convertedVolume: String{
-        let initial = Measurement(value: volume, unit: inintialSelectedVolume.unit)
-        let final = initial.converted(to: finalSelectedVolume.unit)
-        
-        let formatter = MeasurementFormatter()
-        formatter.unitOptions = .providedUnit
-        formatter.numberFormatter.maximumFractionDigits = 2
-        
-        return formatter.string(from: final)
-    }
     
     var body: some View {
         NavigationView{
             Form{
                 Section("Temperature Conversion") {
-                    HStack {
-                        TextField("Temperature", value: $temp, format: .number)
-                            .keyboardType(.decimalPad)
-                            .focused($isFocused)
-                        
-                        Picker("", selection: $inintialSelectedTemp) {
-                            ForEach(TempConversions.allCases, id: \.self) { temp in
-                                Text(temp.symbol)
-                            }
-                        }
-                    }
-                    
-                    HStack{
-                        Text("\(convertedTemp)")
-                        Picker("", selection: $finalSelectedTemp) {
-                            ForEach(TempConversions.allCases, id: \.self) { temp in
-                                Text(temp.symbol)
-                            }
-                        }
-                    }
+                    tempConversion
                 }
                 
                 Section("Length Conversion") {
-                    HStack {
-                        TextField("Length", value: $length, format: .number)
-                            .keyboardType(.decimalPad)
-                            .focused($isFocused)
-                        
-                        Picker("", selection: $inintialSelectedLength) {
-                            ForEach(LengthConversions.allCases, id: \.self) { length in
-                                Text(length.symbol)
-                            }
-                        }
-                    }
-                    
-                    HStack{
-                        Text("\(convertedLength)")
-                        Picker("", selection: $finalSelectedLength) {
-                            ForEach(LengthConversions.allCases, id: \.self) { length in
-                                Text(length.symbol)
-                            }
-                        }
-                    }
+                    lengthConversion
                 }
                 
                 Section("Time Conversion") {
-                    HStack {
-                        TextField("Time", value: $time, format: .number)
-                            .keyboardType(.decimalPad)
-                            .focused($isFocused)
-                        
-                        Picker("", selection: $inintialSelectedTime) {
-                            ForEach(TimeConversions.allCases, id: \.self) { time in
-                                Text(time.symbol)
-                            }
-                        }
-                    }
-                    
-                    HStack{
-                        Text("\(convertedTime)")
-                        Picker("", selection: $finalSelectedTime) {
-                            ForEach(TimeConversions.allCases, id: \.self) { time in
-                                Text(time.symbol)
-                            }
-                        }
-                    }
+                    timeConversion
                 }
                 
                 Section("Volume Conversion") {
-                    HStack {
-                        TextField("Volume", value: $volume, format: .number)
-                            .keyboardType(.decimalPad)
-                            .focused($isFocused)
-                        
-                        Picker("", selection: $inintialSelectedVolume) {
-                            ForEach(VolumeConversions.allCases, id: \.self) { volume in
-                                Text(volume.symbol)
-                            }
-                        }
-                    }
-                    
-                    HStack{
-                        Text("\(convertedVolume)")
-                        Picker("", selection: $finalSelectedVolume) {
-                            ForEach(VolumeConversions.allCases, id: \.self) { volume in
-                                Text(volume.symbol)
-                            }
-                        }
-                    }
+                    volumeConversion
                 }
                 
             }.navigationTitle("Convertor")
@@ -306,6 +186,151 @@ struct ContentView: View {
                         }
                     }
                 }
+        }
+    }
+}
+
+extension ContentView{
+    
+    var convertedTemp: String{
+        let initial = Measurement(value: temp, unit: inintialSelectedTemp.unit)
+        let final = initial.converted(to: finalSelectedTemp.unit)
+        
+        let formatter = MeasurementFormatter()
+        formatter.unitOptions = .providedUnit
+        formatter.numberFormatter.maximumFractionDigits = 2
+        
+        return formatter.string(from: final)
+    }
+    
+    @ViewBuilder var tempConversion: some View{
+        HStack {
+            TextField("Temperature", value: $temp, format: .number)
+                .keyboardType(.decimalPad)
+                .focused($isFocused)
+            
+            Picker("", selection: $inintialSelectedTemp) {
+                ForEach(TempConversions.allCases, id: \.self) { temp in
+                    Text(temp.symbol)
+                }
+            }
+        }
+        
+        HStack{
+            Text("\(convertedTemp)")
+            Picker("", selection: $finalSelectedTemp) {
+                ForEach(TempConversions.allCases, id: \.self) { temp in
+                    Text(temp.symbol)
+                }
+            }
+        }
+    }
+}
+
+extension ContentView{
+    var convertedLength: String{
+        let initial = Measurement(value: length, unit: inintialSelectedLength.unit)
+        let final = initial.converted(to: finalSelectedLength.unit)
+        
+        let formatter = MeasurementFormatter()
+        formatter.unitOptions = .providedUnit
+        formatter.numberFormatter.maximumFractionDigits = 2
+        
+        return formatter.string(from: final)
+    }
+    
+    @ViewBuilder var lengthConversion: some View{
+        HStack {
+            TextField("Length", value: $length, format: .number)
+                .keyboardType(.decimalPad)
+                .focused($isFocused)
+            
+            Picker("", selection: $inintialSelectedLength) {
+                ForEach(LengthConversions.allCases, id: \.self) { length in
+                    Text(length.symbol)
+                }
+            }
+        }
+        
+        HStack{
+            Text("\(convertedLength)")
+            Picker("", selection: $finalSelectedLength) {
+                ForEach(LengthConversions.allCases, id: \.self) { length in
+                    Text(length.symbol)
+                }
+            }
+        }
+    }
+}
+
+extension ContentView{
+    var convertedTime: String{
+        let initial = Measurement(value: time, unit: inintialSelectedTime.unit)
+        let final = initial.converted(to: finalSelectedTime.unit)
+        
+        let formatter = MeasurementFormatter()
+        formatter.unitOptions = .providedUnit
+        formatter.numberFormatter.maximumFractionDigits = 2
+        
+        return formatter.string(from: final)
+    }
+    
+    @ViewBuilder var timeConversion: some View{
+        HStack {
+            TextField("Time", value: $time, format: .number)
+                .keyboardType(.decimalPad)
+                .focused($isFocused)
+            
+            Picker("", selection: $inintialSelectedTime) {
+                ForEach(TimeConversions.allCases, id: \.self) { time in
+                    Text(time.symbol)
+                }
+            }
+        }
+        
+        HStack{
+            Text("\(convertedTime)")
+            Picker("", selection: $finalSelectedTime) {
+                ForEach(TimeConversions.allCases, id: \.self) { time in
+                    Text(time.symbol)
+                }
+            }
+        }
+    }
+}
+
+extension ContentView{
+    var convertedVolume: String{
+        let initial = Measurement(value: volume, unit: inintialSelectedVolume.unit)
+        let final = initial.converted(to: finalSelectedVolume.unit)
+        
+        let formatter = MeasurementFormatter()
+        formatter.unitOptions = .providedUnit
+        formatter.numberFormatter.maximumFractionDigits = 2
+        
+        return formatter.string(from: final)
+    }
+    
+    @ViewBuilder var volumeConversion: some View{
+        HStack {
+            TextField("Volume", value: $volume, format: .number)
+                .keyboardType(.decimalPad)
+                .focused($isFocused)
+            
+            Picker("", selection: $inintialSelectedVolume) {
+                ForEach(VolumeConversions.allCases, id: \.self) { volume in
+                    Text(volume.symbol)
+                }
+            }
+        }
+        
+        HStack{
+            Text("\(convertedVolume)")
+            Picker("", selection: $finalSelectedVolume) {
+                ForEach(VolumeConversions.allCases, id: \.self) { volume in
+                    Text(volume.symbol)
+                }
+            }
         }
     }
 }

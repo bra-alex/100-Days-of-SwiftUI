@@ -96,6 +96,7 @@ struct TipsyCloneView: View {
                     Text(total, format: currencyFormat)
                         .font(.system(size: 20))
                         .padding(.leading, 45)
+                        .foregroundColor(tipPercentage == 0 ? .red : .primary)
                     
                     Spacer()
                 }

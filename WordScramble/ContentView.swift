@@ -75,6 +75,11 @@ struct ContentView: View {
             }
             .navigationTitle(rootWord)
             .onAppear(perform: startGame)
+            .toolbar {
+                Button("Reset", role: .destructive, action: resetGame)
+                    .buttonStyle(.borderedProminent)
+                    .disabled(usedWords.isEmpty)
+            }
         }
     }
     
@@ -83,6 +88,7 @@ struct ContentView: View {
             if let startWords = try? String(contentsOf: startWordsUrl){
                 let words = startWords.components(separatedBy: "\n")
                 rootWord = words.randomElement() ?? words[0]
+                newWord = ""
                 return
             }
         }
@@ -128,6 +134,12 @@ struct ContentView: View {
         newWord = ""
     }
     
+    func resetGame(){
+        startGame()
+        score = 0
+        usedWords.removeAll()
+    }
+    
     func isNotUsed(word: String) -> Bool{
         !usedWords.contains(word)
     }
@@ -161,15 +173,17 @@ struct ContentView: View {
     func calculateScore(){
         var points = 0
         switch newWord.count {
-        case 3...5:
-            points = 7
+            case 3...4:
+                points = 3
+                
+            case 5...6:
+                points = 6
             
-        case 6...8:
-            points = 10
-            
-        default:
-            points = 0
-            
+            case 7...8:
+                points = 9
+                
+            default:
+                points = 0
         }
         score += points
     }

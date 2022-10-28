@@ -52,10 +52,13 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(red: 0.189, green: 0.094, blue: 0.457)
+                Image("stars")
+                    .resizable()
+                    .scaledToFill()
+                    .clipped()
+                    .frame(maxWidth: UIScreen.main.bounds.width, minHeight:  UIScreen.main.bounds.height, maxHeight: UIScreen.main.bounds.height)
                     .overlay(content: {
-                        Image("stars")
-                            .aspectRatio(contentMode: .fill)
+                        Color(red: 0.189, green: 0.094, blue: 0.457)
                             .blendMode(.difference)
                     })
                     .ignoresSafeArea()

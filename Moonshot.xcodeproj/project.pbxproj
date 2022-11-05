@@ -11,6 +11,7 @@
 		98B52E9829166305006E5656 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B52E9729166305006E5656 /* ContentView.swift */; };
 		98B52E9A29166306006E5656 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98B52E9929166306006E5656 /* Assets.xcassets */; };
 		98B52E9D29166306006E5656 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98B52E9C29166306006E5656 /* Preview Assets.xcassets */; };
+		98B52EA4291664C1006E5656 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B52EA3291664C1006E5656 /* Test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		98B52E9729166305006E5656 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		98B52E9929166306006E5656 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		98B52E9C29166306006E5656 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		98B52EA3291664C1006E5656 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				98B52E9529166305006E5656 /* MoonshotApp.swift */,
+				98B52EA3291664C1006E5656 /* Test.swift */,
 				98B52E9729166305006E5656 /* ContentView.swift */,
 				98B52E9929166306006E5656 /* Assets.xcassets */,
 				98B52E9B29166306006E5656 /* Preview Content */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B52EA4291664C1006E5656 /* Test.swift in Sources */,
 				98B52E9829166305006E5656 /* ContentView.swift in Sources */,
 				98B52E9629166305006E5656 /* MoonshotApp.swift in Sources */,
 			);

@@ -6,7 +6,39 @@
 //
 
 import SwiftUI
-
+struct Arrow: Shape{
+    var size: Double
+    
+    var animatableData: Double{
+        get { size }
+        set { size = newValue }
+    }
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        let headPath = Path { p in
+            p.move(to: CGPoint(x: rect.midX, y: rect.minY))
+            p.addLine(to: CGPoint(x: rect.midX - size, y: rect.minY + size))
+            p.addLine(to: CGPoint(x: rect.midX + size, y: rect.minY + size))
+            p.closeSubpath()
+        }
+        
+        let bodyPath = Path { p in
+            p.move(to: CGPoint(x: rect.midX - size / 2.5, y: rect.minY + size))
+            p.addLine(to: CGPoint(x: rect.midX + size / 2.5, y: rect.minY + size))
+            p.addLine(to: CGPoint(x: rect.midX + size / 2.5, y: rect.maxY - 350))
+            p.addLine(to: CGPoint(x: rect.midX - size / 2.5, y: rect.maxY - 350))
+            path.closeSubpath()
+//            p.addLine(to: CGPoint(x: rect.midX - bodySize, y: rect.minY + headSize))
+        }
+        
+        path.addPath(bodyPath)
+        path.addPath(headPath)
+        
+        return path
+    }
+}
 
 struct Flower: Shape{
     var petalOffset: Double
@@ -85,6 +117,8 @@ struct Arc: InsettableShape{
 struct ShapesView: View {
     @State private var petalOffset = -62.0
     @State private var petalWidth = 0.0
+    @State private var size = 10.0
+    @State private var bodySize = 10.0
     var body: some View {
         
         
@@ -101,32 +135,40 @@ struct ShapesView: View {
 //            .strokeBorder(.pink, lineWidth: 10) // Inside the border
         
         VStack{
-            Flower(petalOffset: petalOffset, petalWidth: petalWidth)
+            Arrow(size: size)
+                .onTapGesture {
+                    withAnimation {
+                        size = Double.random(in: 10...100)
+                    }
+                }
+                
+//            Flower(petalOffset: petalOffset, petalWidth: petalWidth)
 //                .stroke(.blue, lineWidth: 2)
 //                .fill(.pink, style: FillStyle(eoFill: true))
-                .fill(ImagePaint(image: Image("tree"), sourceRect: CGRect(x: 0.5, y: 0.5, width: 1, height: 0.2), scale: 1), style: FillStyle(eoFill: true))
+//                .fill(ImagePaint(image: Image("tree"), sourceRect: CGRect(x: 0.5, y: 0.5, width: 1, height: 0.2), scale: 1), style: FillStyle(eoFill: true))
 //                .stroke(ImagePaint(image: Image("tree"), sourceRect: CGRect(x: 0.5, y: 0.5, width: 1, height: 0.2), scale: 1), lineWidth: 5)
-                .padding( )
+//                .padding( )
 //                .animation(.default, value: petalWidth)
-                .drawingGroup()
+//                .drawingGroup()
             
-//            Text("Offset")
-//            Slider(value: $petalOffset, in: -62...100)
-//                .padding(.horizontal)
+            Text("Head")
+            
+            Slider(value: $size, in: 0...100)
+                .padding(.horizontal)
 //
-//            Text("Width")
-//            Slider(value: $petalWidth, in: 0...1000)
+//            Text("Body")
+//            Slider(value: $bodySize, in: 0...100)
 //                .padding(.horizontal)
         }
-        .ignoresSafeArea()   
-        .onAppear {
-            withAnimation(.easeInOut(duration: 10)) {
-                while(petalWidth < 1000){
-                    petalWidth += 2  
-                    petalOffset += 2
-                }
-            }
-        }
+//        .ignoresSafeArea()
+//        .onAppear {
+//            withAnimation(.easeInOut(duration: 10)) {
+//                while(petalWidth < 1000){
+//                    petalWidth += 2
+//                    petalOffset += 2
+//                }
+//            }
+//        }
          
     }
 }

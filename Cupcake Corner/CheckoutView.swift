@@ -24,7 +24,7 @@ struct CheckoutView: View {
                 }
                 .frame(height: 233)
                 
-                Text("Total Cost: \(order.cost, format: .currency(code: Locale.current.currency?.identifier ?? "GHS"))")
+                Text("Total Cost: \(order.orders.cost, format: .currency(code: Locale.current.currency?.identifier ?? "GHS"))")
                     .font(.title)
                 
                 Button("Place Order") {
@@ -46,10 +46,12 @@ struct CheckoutView: View {
     }
     
     func placeOrder() async {
-        guard let encodedData = try? JSONEncoder().encode(order) else {
+        guard let encodedData = try? JSONEncoder().encode(order.orders) else {
             print("Encoding failed!")
             return
         }
+        
+        print(order.orders)
         
         let url = URL(string: "https://reqres.in/api/cupcakes")!
         

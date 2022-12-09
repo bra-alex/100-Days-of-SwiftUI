@@ -13,21 +13,21 @@ struct OrderView: View {
     var body: some View {
         Form {
             Section {
-                Picker("Cupcake Type: ", selection: $order.type) {
+                Picker("Cupcake Type: ", selection: $order.orders.type) {
                     ForEach(Order.types.indices) {
                         Text(Order.types[$0])
                     }
                 }
                 
-                Stepper("Number of cakes: \(order.quantity)", value: $order.quantity, in: 3...20)
+                Stepper("Number of cakes: \(order.orders.quantity)", value: $order.orders.quantity, in: 3...20)
             }
             
             Section {
-                Toggle("Special Requests", isOn: $order.specialRequestEnabled.animation())
+                Toggle("Special Requests", isOn: $order.orders.specialRequestEnabled.animation())
                 
-                if order.specialRequestEnabled{
-                    Toggle("Extra Frosting", isOn: $order.extraFrosting)
-                    Toggle("Sprinkles", isOn: $order.addSprinkles)
+                if order.orders.specialRequestEnabled{
+                    Toggle("Extra Frosting", isOn: $order.orders.extraFrosting)
+                    Toggle("Sprinkles", isOn: $order.orders.addSprinkles)
                 }
             }
             

@@ -13,10 +13,10 @@ struct AddressView: View {
     var body: some View {
         Form {
             Section {
-                TextField("Name", text: $order.name)
-                TextField("Street Address", text: $order.streetAddress)
-                TextField("City", text: $order.city)
-                TextField("Zip", text: $order.zip)
+                TextField("Name", text: $order.orders.name)
+                TextField("Street Address", text: $order.orders.streetAddress)
+                TextField("City", text: $order.orders.city)
+                TextField("Zip", text: $order.orders.zip)
             }
             
             Section {
@@ -26,7 +26,7 @@ struct AddressView: View {
                     Text("Checkout")
                 }
             }
-            .disabled(order.completeDetails)
+            .disabled(order.orders.completeDetails)
         }
         .navigationTitle("Delivery Details")
         .navigationBarTitleDisplayMode(.inline)

@@ -16,6 +16,11 @@
 		98762AB52944FD400005F10E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98762AB42944FD400005F10E /* ContentView.swift */; };
 		98762AB72944FD420005F10E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98762AB62944FD420005F10E /* Assets.xcassets */; };
 		98762ABA2944FD420005F10E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98762AB92944FD420005F10E /* Preview Assets.xcassets */; };
+		98B11AF5294C744200800417 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B11AF4294C744200800417 /* AddBookView.swift */; };
+		98B11AF7294C7B2700800417 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B11AF6294C7B2700800417 /* RatingView.swift */; };
+		98B11AF9294C7EFF00800417 /* EmojiRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B11AF8294C7EFF00800417 /* EmojiRatingView.swift */; };
+		98B11AFB294C997200800417 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B11AFA294C997200800417 /* DetailView.swift */; };
+		98B11AFD294CA1BC00800417 /* BooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B11AFC294CA1BC00800417 /* BooksView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,11 @@
 		98762AB42944FD400005F10E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		98762AB62944FD420005F10E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		98762AB92944FD420005F10E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		98B11AF4294C744200800417 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
+		98B11AF6294C7B2700800417 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		98B11AF8294C7EFF00800417 /* EmojiRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRatingView.swift; sourceTree = "<group>"; };
+		98B11AFA294C997200800417 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		98B11AFC294CA1BC00800417 /* BooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +55,6 @@
 		982D98A9294501BB005CB33D /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				982D98AE294512A0005CB33D /* Data.swift */,
 				982D98AA29450975005CB33D /* Bindings.swift */,
 				982D98AC29450FEF005CB33D /* MultiLineView.swift */,
 				982D98AE294512A0005CB33D /* Data.swift */,
@@ -74,7 +83,12 @@
 			children = (
 				982D98A9294501BB005CB33D /* Examples */,
 				98762AB22944FD400005F10E /* BookwormApp.swift */,
+				98B11AF4294C744200800417 /* AddBookView.swift */,
 				98762AB42944FD400005F10E /* ContentView.swift */,
+				98B11AFC294CA1BC00800417 /* BooksView.swift */,
+				98B11AFA294C997200800417 /* DetailView.swift */,
+				98B11AF8294C7EFF00800417 /* EmojiRatingView.swift */,
+				98B11AF6294C7B2700800417 /* RatingView.swift */,
 				982D98B029451378005CB33D /* Bookworm.xcdatamodeld */,
 				982D98B3294513F3005CB33D /* DataController.swift */,
 				98762AB62944FD420005F10E /* Assets.xcassets */,
@@ -161,9 +175,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B11AF9294C7EFF00800417 /* EmojiRatingView.swift in Sources */,
 				982D98B4294513F3005CB33D /* DataController.swift in Sources */,
 				982D98AD29450FEF005CB33D /* MultiLineView.swift in Sources */,
 				982D98B229451378005CB33D /* Bookworm.xcdatamodeld in Sources */,
+				98B11AF7294C7B2700800417 /* RatingView.swift in Sources */,
+				98B11AFB294C997200800417 /* DetailView.swift in Sources */,
+				98B11AF5294C744200800417 /* AddBookView.swift in Sources */,
+				98B11AFD294CA1BC00800417 /* BooksView.swift in Sources */,
 				982D98AF294512A0005CB33D /* Data.swift in Sources */,
 				98762AB52944FD400005F10E /* ContentView.swift in Sources */,
 				98762AB32944FD400005F10E /* BookwormApp.swift in Sources */,

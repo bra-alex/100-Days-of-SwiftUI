@@ -48,6 +48,7 @@
 				982D98AE294512A0005CB33D /* Data.swift */,
 				982D98AA29450975005CB33D /* Bindings.swift */,
 				982D98AC29450FEF005CB33D /* MultiLineView.swift */,
+				982D98AE294512A0005CB33D /* Data.swift */,
 			);
 			path = Examples;
 			sourceTree = "<group>";

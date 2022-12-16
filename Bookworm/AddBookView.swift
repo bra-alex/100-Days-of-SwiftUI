@@ -19,6 +19,17 @@ struct AddBookView: View {
     
     let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
     
+    var valid: Bool{
+        let title = title.trimmingCharacters(in: .whitespaces)
+        let author = author.trimmingCharacters(in: .whitespaces)
+        
+        if title.isEmpty || author.isEmpty{
+                return true
+        }
+        
+        return false
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -52,6 +63,7 @@ struct AddBookView: View {
                         
                         dismiss()
                     }
+                    .disabled(valid)
                 }
             }
             .navigationTitle("Add Book")

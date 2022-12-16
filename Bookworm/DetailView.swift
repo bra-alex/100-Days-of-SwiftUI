@@ -39,6 +39,9 @@ struct DetailView: View {
             Text(book.review ?? "N/A")
                 .padding()
             
+            Text(book.date?.formatted(date: .abbreviated, time: .omitted) ?? "N/A")
+                .font(.subheadline)
+            
             RatingView(rating: .constant(Int(book.rating)))
                 .font(.largeTitle)
         }

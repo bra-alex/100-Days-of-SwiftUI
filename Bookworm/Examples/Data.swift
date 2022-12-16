@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct Data: View {
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var students: FetchedResults<Student>
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            List(students) { student in
+                Text(student.name ?? "Unknown")
+            }.listStyle(.plain)
+            
+            Button("Add") {
+                let firstNames = ["Kwabena", "Ciel", "Yaa", "Afia", "Connie"]
+                let lastNames = ["Winston", "Blankson", "Rockson", "Forson", "Dickson"]
+                
+                let firstName = firstNames.randomElement()!
+                let lastName = lastNames.randomElement()!
+                
+                let student = Student(context: moc)
+                student.id = UUID()
+                student.name = "\(firstName) \(lastName)"
+                
+                try? moc.save()
+            }
+        }
     }
 }
 

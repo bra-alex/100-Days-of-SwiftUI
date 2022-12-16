@@ -12,21 +12,21 @@ struct Data: View {
 //    @FetchRequest(sortDescriptors: []) var students: FetchedResults<Student>
     var body: some View {
         VStack {
-            List(students) { student in
-                Text(student.name ?? "Unknown")
-            }.listStyle(.plain)
+//            List(students) { student in
+//                Text(student.name ?? "Unknown")
+//            }.listStyle(.plain)
             
 //            Button("Add") {
 //                let firstNames = ["Kwabena", "Ciel", "Yaa", "Afia", "Connie"]
 //                let lastNames = ["Winston", "Blankson", "Rockson", "Forson", "Dickson"]
-//                
+//
 //                let firstName = firstNames.randomElement()!
 //                let lastName = lastNames.randomElement()!
-//                
+//
 //                let student = Student(context: moc)
 //                student.id = UUID()
 //                student.name = "\(firstName) \(lastName)"
-//                
+//
 //                try? moc.save()
 //            }
         }

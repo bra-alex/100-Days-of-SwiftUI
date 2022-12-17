@@ -15,6 +15,9 @@
 		98A90573294D83C5007086DB /* CoreDataProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98A90571294D83C5007086DB /* CoreDataProject.xcdatamodeld */; };
 		98E53B17294DBC590072CEE6 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E53B15294DBC590072CEE6 /* Movie+CoreDataClass.swift */; };
 		98E53B18294DBC590072CEE6 /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E53B16294DBC590072CEE6 /* Movie+CoreDataProperties.swift */; };
+		98E53B1B294DCD4B0072CEE6 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E53B1A294DCD4B0072CEE6 /* Constraints.swift */; };
+		98E53B1D294DCDB10072CEE6 /* Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E53B1C294DCDB10072CEE6 /* Filtering.swift */; };
+		98E53B1F294DD3440072CEE6 /* DynamicFiltering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E53B1E294DD3440072CEE6 /* DynamicFiltering.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		98A90572294D83C5007086DB /* CoreDataProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataProject.xcdatamodel; sourceTree = "<group>"; };
 		98E53B15294DBC590072CEE6 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
 		98E53B16294DBC590072CEE6 /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		98E53B1A294DCD4B0072CEE6 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		98E53B1C294DCDB10072CEE6 /* Filtering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filtering.swift; sourceTree = "<group>"; };
+		98E53B1E294DD3440072CEE6 /* DynamicFiltering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFiltering.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +67,10 @@
 			children = (
 				98E53B19294DC5950072CEE6 /* ManagedCont */,
 				98A90563294D8358007086DB /* CoreDataProjectApp.swift */,
+				98E53B1A294DCD4B0072CEE6 /* Constraints.swift */,
 				98A90565294D8358007086DB /* ContentView.swift */,
+				98E53B1E294DD3440072CEE6 /* DynamicFiltering.swift */,
+				98E53B1C294DCDB10072CEE6 /* Filtering.swift */,
 				98115370294D858100310EA6 /* DataController.swift */,
 				98A90571294D83C5007086DB /* CoreDataProject.xcdatamodeld */,
 				98A90567294D835A007086DB /* Assets.xcassets */,
@@ -157,11 +166,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98E53B1F294DD3440072CEE6 /* DynamicFiltering.swift in Sources */,
 				98A90566294D8358007086DB /* ContentView.swift in Sources */,
+				98E53B1B294DCD4B0072CEE6 /* Constraints.swift in Sources */,
 				98115371294D858100310EA6 /* DataController.swift in Sources */,
 				98A90564294D8358007086DB /* CoreDataProjectApp.swift in Sources */,
 				98E53B17294DBC590072CEE6 /* Movie+CoreDataClass.swift in Sources */,
 				98E53B18294DBC590072CEE6 /* Movie+CoreDataProperties.swift in Sources */,
+				98E53B1D294DCDB10072CEE6 /* Filtering.swift in Sources */,
 				98A90573294D83C5007086DB /* CoreDataProject.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

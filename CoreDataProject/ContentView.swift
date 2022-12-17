@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var wizards: FetchedResults<Wizard>
     var body: some View {
         //Check for changes before saving
         /*
@@ -18,12 +20,23 @@ struct ContentView: View {
          }
          */
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            List(wizards, id:\.self) { wizard in
+                Text(wizard.name ?? "N/A")
+            }
+            
+            Button("Add") {
+                let wizard = Wizard(context: moc)
+                wizard.name = "Kyeiwaa"
+            }
+            
+            Button("Save"){
+                do{
+                    try  moc.save()
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
         }
-        .padding()
     }
 }
 

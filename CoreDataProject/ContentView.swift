@@ -9,6 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        //Check for changes before saving
+        /*
+         Button("Save"){
+            if moc.hasChanges {
+                try? moc.save()
+            }
+         }
+         */
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)

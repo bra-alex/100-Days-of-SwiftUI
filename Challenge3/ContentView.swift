@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var users = [User]()
+    @State private var users = [UserModel]()
     var body: some View {
         NavigationStack{
             List(users) { user in
@@ -23,15 +23,16 @@ struct ContentView: View {
             }
             .listStyle(.plain)
         }
-        .onAppear {
-            Task{
-                await loadData()
+        .task{
+            await loadData()
+            await MainActor.run{
+                
             }
         }
     }
     
     func loadData() async {
-
+        
         if !users.isEmpty{
             print(users)
             return
@@ -48,7 +49,7 @@ struct ContentView: View {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             
-            if let decodedData = try? decoder.decode([User].self, from: data){
+            if let decodedData = try? decoder.decode([UserModel].self, from: data){
                 users = decodedData
             }
             

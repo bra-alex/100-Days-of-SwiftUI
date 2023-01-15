@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 struct DetailView: View {
-    let user: User
+    let user: UserModel
     var body: some View {
         ScrollView{
             VStack(alignment: .leading){

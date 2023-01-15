@@ -12,12 +12,16 @@ struct ContentView: View {
     var body: some View {
         NavigationStack{
             List(users) { user in
-                
-                VStack(alignment: .leading){
-                    Text(user.name)
-                    Text(user.isActive ? "Active" : "Inactive")
+                NavigationLink {
+                    DetailView(user: user)
+                } label: {
+                    HStack(alignment: .center){
+                        Text(user.name)
+                        OnlineStatus(online: user.isActive)
+                    }
                 }
             }
+            .listStyle(.plain)
         }
         .onAppear {
             Task{
@@ -46,7 +50,6 @@ struct ContentView: View {
             
             if let decodedData = try? decoder.decode([User].self, from: data){
                 users = decodedData
-                print(decodedData)
             }
             
         } catch {

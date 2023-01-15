@@ -9,25 +9,25 @@ import SwiftUI
 import Foundation
 
 struct DetailView: View {
-    let user: UserModel
+    let user: User
     var body: some View {
         ScrollView{
             VStack(alignment: .leading){
                 VStack(alignment: .leading, spacing: 10){
                     Text("Age: \(user.age)")
-                    Text("Works For: \(user.company)")
-                    Text("Email: \(user.email)")
-                    Text("Address: \(user.address)")
+                    Text("Works For: \(user.unwrappedCompany)")
+                    Text("Email: \(user.unwrappedEmail)")
+                    Text("Address: \(user.unwrappedAddress)")
                 }
                 .padding(.bottom)
                 
-                Text("Biography: \(user.about)")
+                Text("Biography: \(user.unwrappedAbout)")
                     .padding(.bottom)
                 
                 VStack(alignment: .leading, spacing: 5){
                     Text("Tags:")
                         .bold()
-                    ForEach(user.tags, id: \.self){ tag in
+                    ForEach(user.tags ?? [], id: \.self){ tag in
                         VStack(alignment: .leading, spacing: 2) {
                             Text(tag)
                         }
@@ -38,9 +38,9 @@ struct DetailView: View {
                 VStack(alignment: .leading, spacing: 5){
                     Text("Friends:")
                         .bold()
-                    ForEach(user.friends){ friend in
+                    ForEach(user.friendsArray){ friend in
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(friend.name)
+                            Text(friend.unwrappedName)
                         }
                     }
                 }
@@ -52,7 +52,7 @@ struct DetailView: View {
             ToolbarItem(placement: .principal) {
                 
                 HStack(alignment: .center){
-                    Text(user.name)
+                    Text(user.unwrappedName)
                         .bold()
                     OnlineStatus(online: user.isActive)
                 }
@@ -62,8 +62,8 @@ struct DetailView: View {
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView(user: .init(id: "", isActive: false, name: "", age: 10, company: "", email: "", address: "", about: "", registered: Date(), tags: [""], friends: [.init(id: "", name: "")]))
-    }
-}
+//struct DetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailView(user: User(context: moc))
+//    }
+//}

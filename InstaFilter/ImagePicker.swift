@@ -1,5 +1,5 @@
 //
-//  ViewControllers.swift
+//  ImagePicker.swift
 //  InstaFilter
 //
 //  Created by Don Bouncy on 19/01/2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-struct ViewControllers: UIViewControllerRepresentable {
+struct ImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
     
     class Coordinator: NSObject, PHPickerViewControllerDelegate{
@@ -48,42 +48,4 @@ struct ViewControllers: UIViewControllerRepresentable {
         Coordinator(self)
     }
 }
-
-struct PickImageView: View {
-    @State private var image: Image?
-    @State private var inputImage: UIImage?
-    @State private var showingImagePicker = false
-    var body: some View {
-        VStack{
-            image?
-                    .resizable()
-                    .scaledToFit()
-            
-            Button("Select Image"){ showingImagePicker = true}
-            
-            Button("Save Image"){
-                guard let inputImage = inputImage else {return}
-                let imageSaver = ImageSaver()
-                
-                imageSaver.writePhotoAlbum(image: inputImage)
-            }
-        }
-        .sheet(isPresented: $showingImagePicker) {
-            ViewControllers(image: $inputImage)
-        }
-        .onChange(of: inputImage) { _ in loadImage()}
-    }
-    
-    func loadImage(){
-        guard let inputImage = inputImage else {return}
-        image = Image(uiImage: inputImage)
-    }
-}
-
-struct PickImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        PickImageView()
-    }
-}
-
 

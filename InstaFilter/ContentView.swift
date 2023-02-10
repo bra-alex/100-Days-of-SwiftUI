@@ -14,8 +14,9 @@ struct ContentView: View {
     @State private var inputImage: UIImage?
     
     @State private var chooseImage = false
+    @State private var showFilters = false
     @State private var filterIntensity = 0.2
-    @State private var currentFilter = CIFilter.sepiaTone()
+    @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     let context = CIContext()
     
     var body: some View {
@@ -40,12 +41,14 @@ struct ContentView: View {
                 HStack {
                     Text("Intensity")
                     Slider(value: $filterIntensity)
+                        .onChange(of: filterIntensity) {_ in applyFilter()}
                 }
-                .onChange(of: filterIntensity) {_ in applyFilter()}
                 .padding(.vertical)
                 
                 HStack {
-                    Button("Change Filter", action: changeFilter)
+                    Button("Change Filter"){
+                        showFilters = true
+                    }
                     
                     Spacer()
                     
@@ -58,6 +61,21 @@ struct ContentView: View {
                 ImagePicker(image: $inputImage)
             }
             .onChange(of: inputImage) { _ in loadImage()}
+            .confirmationDialog("Select Filter", isPresented: $showFilters) {
+                Button("Pixellate"){ changeFilter(to: .pixellate())}
+                Button("Edges"){ changeFilter(to: .edges())}
+                Button("Gaussian Blur"){ changeFilter(to: .gaussianBlur())}
+                Button("Crystallize"){ changeFilter(to: .crystallize())}
+                Button("Sepia Tone"){ changeFilter(to: .sepiaTone())}
+                Button("Unsharp Mask"){ changeFilter(to: .unsharpMask())}
+                Button("Vignette"){ changeFilter(to: .vignette())}
+                Button("Twirl Distortion"){ changeFilter(to: .twirlDistortion())}
+                Button("X-Ray"){ changeFilter(to: .xRay())}
+                Button("Cancel", role: .cancel){ }
+            } message: {
+                
+            }
+
         }
     }
     
@@ -65,12 +83,25 @@ struct ContentView: View {
         
     }
     
-    func changeFilter(){
-        
+    func changeFilter(to filter: CIFilter){
+        currentFilter = filter
+        loadImage()
     }
     
     func applyFilter(){
-        currentFilter.intensity = Float(filterIntensity)
+        let inputKeys = currentFilter.inputKeys
+        
+        if inputKeys.contains(kCIInputIntensityKey){
+            currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey)
+        }
+        
+        if inputKeys.contains(kCIInputRadiusKey){
+            currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey)
+        }
+        
+        if inputKeys.contains(kCIInputScaleKey){
+            currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey)
+        }
         
         guard let outputImage = currentFilter.outputImage else { return }
         

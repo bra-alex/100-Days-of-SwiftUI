@@ -16,7 +16,11 @@ struct ContentView: View {
     
     @State private var chooseImage = false
     @State private var showFilters = false
+    
+    @State private var scale = 1.0
+    @State private var radius = 1.0
     @State private var filterIntensity = 0.2
+    
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     let context = CIContext()
     
@@ -47,6 +51,20 @@ struct ContentView: View {
                 .padding(.vertical)
                 
                 HStack {
+                    Text("Radius")
+                    Slider(value: $radius, in: 1...100, step: 0.1)
+                        .onChange(of: radius) {_ in applyFilter()}
+                }
+                .padding(.vertical)
+                
+                HStack {
+                    Text("Scale")
+                    Slider(value: $scale, in: 1...100, step: 0.1)
+                        .onChange(of: scale) {_ in applyFilter()}
+                }
+                .padding(.vertical)
+                
+                HStack {
                     Button("Change Filter"){
                         showFilters = true
                     }
@@ -54,6 +72,7 @@ struct ContentView: View {
                     Spacer()
                     
                     Button("Save", action: saveImage)
+                        .disabled(image == nil ? true : false)
                 }
             }
             .padding([.horizontal, .bottom])
@@ -63,15 +82,30 @@ struct ContentView: View {
             }
             .onChange(of: inputImage) { _ in loadImage()}
             .confirmationDialog("Select Filter", isPresented: $showFilters) {
-                Button("Pixellate"){ changeFilter(to: .pixellate())}
-                Button("Edges"){ changeFilter(to: .edges())}
-                Button("Gaussian Blur"){ changeFilter(to: .gaussianBlur())}
-                Button("Crystallize"){ changeFilter(to: .crystallize())}
-                Button("Sepia Tone"){ changeFilter(to: .sepiaTone())}
-                Button("Unsharp Mask"){ changeFilter(to: .unsharpMask())}
-                Button("Vignette"){ changeFilter(to: .vignette())}
-                Button("Twirl Distortion"){ changeFilter(to: .twirlDistortion())}
-                Button("X-Ray"){ changeFilter(to: .xRay())}
+                Group{
+                    Button("X-Ray"){ changeFilter(to: .xRay())}
+                    Button("Color Invert"){ changeFilter(to: .colorInvert())}
+                }
+                
+                Group{
+                    Button("Edges"){ changeFilter(to: .edges())}
+                    Button("Gloom"){ changeFilter(to: .gloom())}
+                    Button("Vignette"){ changeFilter(to: .vignette())}
+                    Button("Sepia Tone"){ changeFilter(to: .sepiaTone())}
+                    Button("Unsharp Mask"){ changeFilter(to: .unsharpMask())}
+                }
+                
+                Group{
+                    Button("Pixellate"){ changeFilter(to: .pixellate())}
+                    Button("Crystallize"){ changeFilter(to: .crystallize())}
+                    Button("Twirl Distortion"){ changeFilter(to: .twirlDistortion())}
+                }
+                
+                Group{
+                    Button("Motion Blur"){ changeFilter(to: .motionBlur())}
+                    Button("Gaussian Blur"){ changeFilter(to: .gaussianBlur())}
+                }
+                
                 Button("Cancel", role: .cancel){ }
             } message: {
                 
@@ -108,11 +142,11 @@ struct ContentView: View {
         }
         
         if inputKeys.contains(kCIInputRadiusKey){
-            currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey)
+            currentFilter.setValue(radius, forKey: kCIInputRadiusKey)
         }
         
         if inputKeys.contains(kCIInputScaleKey){
-            currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey)
+            currentFilter.setValue(scale, forKey: kCIInputScaleKey)
         }
         
         guard let outputImage = currentFilter.outputImage else { return }

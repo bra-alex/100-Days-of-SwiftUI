@@ -17,6 +17,8 @@
 		98E47A6A29B8A7B400E584D7 /* EnumViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E47A6929B8A7B400E584D7 /* EnumViews.swift */; };
 		98E47A6C29B8AC6200E584D7 /* MapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E47A6B29B8AC6200E584D7 /* MapsView.swift */; };
 		98E47A6E29B8F71400E584D7 /* LocalAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E47A6D29B8F71400E584D7 /* LocalAuth.swift */; };
+		98E47A7029BBE55E00E584D7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E47A6F29BBE55E00E584D7 /* MapView.swift */; };
+		98E47A7229BBEB7800E584D7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E47A7129BBEB7800E584D7 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		98E47A6929B8A7B400E584D7 /* EnumViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumViews.swift; sourceTree = "<group>"; };
 		98E47A6B29B8AC6200E584D7 /* MapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsView.swift; sourceTree = "<group>"; };
 		98E47A6D29B8F71400E584D7 /* LocalAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuth.swift; sourceTree = "<group>"; };
+		98E47A6F29BBE55E00E584D7 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		98E47A7129BBEB7800E584D7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 				9890F25F29B2336E005FE2C3 /* Techniques */,
 				9890F25329B22F15005FE2C3 /* ContentView.swift */,
 				9890F26429B23D1C005FE2C3 /* FileSave.swift */,
+				98E47A6F29BBE55E00E584D7 /* MapView.swift */,
+				98E47A7129BBEB7800E584D7 /* Location.swift */,
 				9890F25529B22F16005FE2C3 /* Assets.xcassets */,
 				9890F25729B22F16005FE2C3 /* Preview Content */,
 			);
@@ -165,11 +171,13 @@
 			files = (
 				9890F26329B23A4D005FE2C3 /* FileManagement.swift in Sources */,
 				98E47A6A29B8A7B400E584D7 /* EnumViews.swift in Sources */,
+				98E47A7229BBEB7800E584D7 /* Location.swift in Sources */,
 				9890F26529B23D1C005FE2C3 /* FileSave.swift in Sources */,
 				9890F25429B22F15005FE2C3 /* ContentView.swift in Sources */,
 				9890F25229B22F15005FE2C3 /* BucketListApp.swift in Sources */,
 				98E47A6C29B8AC6200E584D7 /* MapsView.swift in Sources */,
 				9890F26129B2338F005FE2C3 /* ComparableConformance.swift in Sources */,
+				98E47A7029BBE55E00E584D7 /* MapView.swift in Sources */,
 				98E47A6E29B8F71400E584D7 /* LocalAuth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

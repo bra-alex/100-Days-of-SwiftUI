@@ -11,6 +11,7 @@
 		98E47A8C29BDD99F00E584D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E47A8B29BDD99F00E584D7 /* ContentView.swift */; };
 		98E47A8E29BDD99F00E584D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E47A8D29BDD99F00E584D7 /* Assets.xcassets */; };
 		98E47A9129BDD99F00E584D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E47A9029BDD99F00E584D7 /* Preview Assets.xcassets */; };
+		98E47A9829BDDAAE00E584D7 /* PicturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E47A9729BDDAAE00E584D7 /* PicturesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		98E47A8B29BDD99F00E584D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		98E47A8D29BDD99F00E584D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		98E47A9029BDD99F00E584D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		98E47A9729BDDAAE00E584D7 /* PicturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		98E47A8829BDD99F00E584D7 /* AccessibilityApp */ = {
 			isa = PBXGroup;
 			children = (
+				98E47A9729BDDAAE00E584D7 /* PicturesView.swift */,
 				98E47A8929BDD99F00E584D7 /* AccessibilityAppApp.swift */,
 				98E47A8B29BDD99F00E584D7 /* ContentView.swift */,
 				98E47A8D29BDD99F00E584D7 /* Assets.xcassets */,
@@ -139,6 +142,7 @@
 			files = (
 				98E47A8C29BDD99F00E584D7 /* ContentView.swift in Sources */,
 				98E47A8A29BDD99F00E584D7 /* AccessibilityAppApp.swift in Sources */,
+				98E47A9829BDDAAE00E584D7 /* PicturesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

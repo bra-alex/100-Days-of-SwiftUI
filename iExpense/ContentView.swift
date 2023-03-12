@@ -45,6 +45,9 @@ struct ContentView: View {
                                             : .black
                                         )
                                 }
+                                .accessibilityElement()
+                                .accessibilityLabel("\(item.name) \(item.amount)")
+                                .accessibilityHint(item.type)
                         }.onDelete{ deleteExpense(at: $0, in: personalExpenses) }
                     }
                 }
